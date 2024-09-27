@@ -1,13 +1,13 @@
-import { useContext } from 'react';
+import { useContext } from "react";
 
-import Modal from './UI/Modal.jsx';
-import CartContext from '../store/CartContext.jsx';
-import Button from './UI/Button.jsx';
-import { currencyFormatter } from '../util/formatter.js';
-import UserProgressContext from '../store/UserProgressContext.jsx';
-import CartItem from './CartItem.jsx';
+import Modal from "./UI/Modal.jsx";
+import CartContext from "../store/CartContext.jsx";
+import Button from "./UI/Button.jsx";
+import { currencyFormatter } from "../util/formatter.js";
+import UserProgressContext from "../store/UserProgressContext.jsx";
+import CartItem from "./CartItem.jsx";
 
-export default function Cart() {
+const Cart = () => {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
 
@@ -21,7 +21,7 @@ export default function Cart() {
   }
 
   return (
-    <Modal className="cart" open={userProgressCtx.progress === 'cart'}>
+    <Modal className="cart" open={userProgressCtx.progress === "cart"}>
       <h2>Your Cart</h2>
       <ul>
         {cartCtx.items.map((item) => (
@@ -40,8 +40,12 @@ export default function Cart() {
         <Button textOnly onClick={handleCloseCart}>
           Close
         </Button>
-        <Button onClick={handleCloseCart}>Go to Checkout</Button>
+        {cartCtx.items.length > 0 && (
+          <Button onClick={handleCloseCart}>Go to Checkout</Button>
+        )}
       </p>
     </Modal>
   );
-}
+};
+
+export default Cart;
