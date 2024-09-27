@@ -1,12 +1,11 @@
+import { useContext } from "react";
 
-import { useContext } from 'react';
+import Button from "./UI/Button.jsx";
+import logoImg from "../assets/logo.jpg";
+import CartContext from "../store/CartContext.jsx";
+import UserProgressContext from "../store/UserProgressContext.jsx";
 
-import Button from './UI/Button.jsx';
-import logoImg from '../assets/logo.jpg';
-import CartContext from '../store/CartContext.jsx';
-import UserProgressContext from '../store/UserProgressContext.jsx';
-
-export default function Header() {
+const Header = () => {
   const cartCtx = useContext(CartContext);
   const userProgressCtx = useContext(UserProgressContext);
 
@@ -31,4 +30,5 @@ export default function Header() {
       </nav>
     </header>
   );
-}
+};
+export default Header;
